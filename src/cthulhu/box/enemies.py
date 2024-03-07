@@ -1,10 +1,13 @@
-from cthulhu.box.dice import (
-    CthulhuStandardDie,
-    CthulhuBonusDie,
-    CthulhuDie,
-)
-from typing import List
 from dataclasses import dataclass, field
+from typing import List
+from cthulhu.box.dice import CthulhuBonusDie, CthulhuDie, CthulhuStandardDie
+from cthulhu.box.decks import (
+    MythosCardsDeck,
+    MythosCard,
+    DiscoveryCardsDeck,
+    DiscoveryCard,
+    DiscoveryCardItem,
+)
 
 type TypeEnemy = Enemy
 type TypeCultist = Cultist
@@ -24,6 +27,7 @@ class Enemy[TypeEnemy]:
 @dataclass
 class ElderOne[Enemy]:
     name: str = "ElderOne"
+    mythos_deck: MythosCardsDeck = field(default_factory=MythosCardsDeck)
 
 
 @dataclass
@@ -54,9 +58,20 @@ class ElderOneCthulhu[TypeElderOne](ElderOne):
     health: int = 12
     max_health: int = 12
     dice: List[CthulhuDie] = field(default_factory=lambda: [CthulhuStandardDie()] * 3)
-    position_on_track: int = 1
     is_killable: bool = False
     is_on_board: bool = False
+    mythos_deck: MythosCardsDeck = field(init=False)
+    discovery_deck: DiscoveryCardsDeck = field(init=False)
+
+    def __post_init__(self):
+        self.mythos_deck = MythosCardsDeck()
+        mythos_cards = [
+            MythosCard(name="xxx", description="", mythos_symbol=False),
+            MythosCard(name="yyy", description="", mythos_symbol=False),
+            MythosCard(name="zzz", description="", mythos_symbol=False),
+        ]
+        for card in mythos_cards:
+            self.mythos_deck.add(card)
 
     def move_on_track(self):
         self.position_on_track += 1
