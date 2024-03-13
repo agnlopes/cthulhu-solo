@@ -38,20 +38,27 @@ Health:                   Stage:   
 
 ROOM_STATS = """\
 Investigators: 3
-- The Kid [1/5]
-- Adam [2/5]
-- Morgan [1/5]
+The Kid [1/5]
+Adam [2/5]
+Morgan [1/5]
 
 Enemies: 1
-- Cultist [0/2]
+Cultist [0/2]
 
 Items: 0
 """
 
 DISCOVERY_CARDS = """\
-| Left | Right 
-| ---- | ----
-| card1 | card2
+ card-1
+ card-2
+ card-3
+"""
+
+INVESTIGAGOR_TURN = """\
+- [] actions: 3 attack, run, rest, trade, episode actions
+- [] draw cthulhu card
+- []investigate or fight?
+- [ ]resolv turn
 """
 
 class CharactersSummary(Widget):
@@ -83,10 +90,11 @@ class InvestigatorStats(Widget):
 
     def compose(self):
         with TabbedContent("Turn", "Stats", "Discovery Cards"):
-            yield Static("Turn: 3-actions -> cthulhu -> investigate -> resolv")
+            with ScrollableContainer():
+                yield Static(INVESTIGAGOR_TURN)
             yield Static(BETH_STATS)
             with ScrollableContainer():
-                yield Markdown(DISCOVERY_CARDS)
+                yield Static(DISCOVERY_CARDS)
 
 class RoomStats(Widget):
     def __init__(self, *args, **kwargs):
