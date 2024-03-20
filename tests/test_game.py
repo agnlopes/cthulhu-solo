@@ -12,7 +12,7 @@ def test_game_instantiation():
         selected_season="1",
         selected_episode="1",
     )
-    assert game.episode_id == "season1_episode1"
+    assert game.episode.id == "season1_episode1"
     assert game.investigators[0].name == "Beth"
     assert game.elder_one.name == "Cthulhu"
 
