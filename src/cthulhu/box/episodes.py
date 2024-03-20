@@ -44,13 +44,9 @@ class EpisodeMap:
 class Episode:
     id: str
     name: str
-    map: List[Room] = field(default_factory=list)
+    map: EpisodeMap = field(init=False)
     actions: List[Iterable] = field(default_factory=list)
     rules: List[Iterable] = field(default_factory=list)
-
-    def map_from_json(self, map: List[dict]):
-        for room in map:
-            self.map.append(Room(**room))
 
 
 class EpisodesRegistry:

@@ -1,5 +1,6 @@
-from typing import Dict, List, Optional, TypeVar, Generic
+from typing import Dict, List, Tuple, Optional, TypeVar, Generic
 from dataclasses import dataclass, field
+from transitions import State, Machine
 
 type TypeSkill = Skill
 type TypeInvestigator = Investigator
@@ -14,9 +15,9 @@ class Skill[TypeSkill]:
 
 @dataclass
 class Investigator[TypeInvestigator]:
-    name: str = "PLayer"
-    sanity: int = 0
-    max_sanity: int = 15
+    name: str = "Player"
+    insanity: int = 0
+    max_insanity: int = 15
     health: int = 5
     max_health: int = 0
     stress: int = 5
@@ -25,14 +26,24 @@ class Investigator[TypeInvestigator]:
     actions: int = 3
     actions_left: int = 3
     actions_free: List[str] = field(default_factory=list)
-    run_range: int = 3
-    run_stealth: int = 0
-    attack_range: int = 0
     is_safe: bool = True
     is_alive: bool = True
     is_standing: bool = True
     room: int = 0
-    _prev_room: int = 0
+    fsm: Machine = field(init=False)
+
+    def __post_init__(self):
+        self.set_fsm()
+
+    def set_fsm(self):
+        machine_states = [
+            State(name="playing", on_enter="play_actions"),
+            State(name="mythos", on_enter="draw_mythos_card"),
+            State(name="investigate", on_enter="investigate_or_fight"),
+            State(name="resolv", on_enter="resolv_end_of_turn"),
+        ]
+
+        self.fsm = Machine(self, states=machine_states, initial="playing")
 
 
 @dataclass

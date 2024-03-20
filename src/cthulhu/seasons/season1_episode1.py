@@ -2,7 +2,7 @@ from dataclasses import dataclass, field
 
 from cthulhu.box.tokens import FireToken, GateToken, PlayerStartToken
 from cthulhu.box.enemies import Cultist
-from cthulhu.box.episodes import Episode, Room, EpisodeMap, EpisodesRegistry
+from cthulhu.box.episodes import Episode, Room, EpisodeMap
 from cthulhu.box.decks import (
     MythosCardsDeck,
     MythosCard,
@@ -92,7 +92,3 @@ class Season1Episode1(Episode):
 
         for card in discovery_cards:
             self.discovery_deck.add(card)
-
-
-episodes_registry = EpisodesRegistry()
-episodes_registry.register(Season1Episode1())

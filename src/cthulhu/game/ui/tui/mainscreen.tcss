@@ -1,0 +1,48 @@
+Screen {
+    layout: grid;
+    grid-size: 4 ;
+    grid-rows: 0.5fr auto  1fr;
+}
+
+#header {
+    align: left top;
+}
+
+#turn {
+    column-span: 2;
+    align: left top;
+}
+
+#chars {
+    column-span: 2;
+    align: left top;
+}
+
+#main {
+    column-span: 3;
+    row-span: 3;
+    align: left top;
+}
+
+#room {
+   row-span: 2;
+   align: left top;
+}
+
+#logs {
+    align: left top;
+}
+
+#shell {
+    align: left top;
+    column-span: 4;
+}
+
+.inputbox {
+    border: solid red;
+}
+
+.box {
+    height: 100%;
+    border: solid green;
+}
