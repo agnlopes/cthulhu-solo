@@ -1,0 +1,23 @@
+- name: Fire Vampire
+  life: 4
+  standard_dice: 2
+  bonus_dice: 1
+  mechanic: When it attacks, first place a Fire token in its space
+
+- name: Byakhee
+  life: 3
+  standard_dice: 1
+  bonus_dice: 2
+  mechanic: When it attacks, each <arcane> also count as success
+
+- name: Cultist
+  life: 2
+  standard_dice: 0
+  bonus_dice: 2
+  mechanic:
+
+- name: Star Spawn
+  life: 7
+  standard_dice: 3
+  bonus_dice: 0
+  mechanic: When attacking or being attacked while in a R'lyeh space, add 2 <tentacle> to the roll

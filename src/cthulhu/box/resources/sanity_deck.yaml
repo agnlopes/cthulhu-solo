@@ -1,0 +1,9 @@
+- pathology: Masochism
+  symptoms: Each time you take wounds, put the same number of wound tokens on this token.
+            If there are no tokens on this card, take 1 sound. Otherwise remove all tokens from this card and heal 1 stress per token removed
+
+- pathology: Fear of Crowds
+  symptoms: Take 1 stress for every other figure in your space (enemy or investigator). If you are alone, heal all of your stress instead
+
+- pathology: Kleptomania
+  symptoms: Steal at least 1 Item, Companion, or tradable episode token from any investigator(s) in your space to heal all of your stress. If you can't steal anything, take 2 stress

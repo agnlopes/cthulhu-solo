@@ -1,0 +1,59 @@
+- name: Adam
+  long_name: Lord Adam Benchley
+  origin: Manchester, England
+  quote: Shoot first. Never ask.
+  description: "Lord Benchley's signature eye-twitch is both word and warning
+                of the roiling thoughts beneath his calm, British Demeanor. the
+                man holds hilself together admirably, but most invetigators know 
+                to keep some reserve around the poor fellow, lest the twitch
+                settle into a steely glare. Lord Benchley is quite mad of course,
+                having battled the cults for decades and always maintaing the upper
+                hand, if only barely. Lord Benchley himself relies on a stiff upper
+                lip, stoic resolve, and indulging his psychotic tendencies against
+                cultists and their foul minions at the very opportunity."
+  skills:
+    - Fueled by Madness
+    - Marksman
+    - Thoughness
+
+- name: Beth
+  long_name: Sister Beth
+  origin: Bogotá, Colombia
+  quote: Their lack of faith should disturb them.
+  description: "Sister Beth knows not what God's plan for ther may be, except that
+                she'll likely meet him very soon. Afflicted at an early age with a
+                nervous nature, young Beth made the rounds through various hospitals
+                and sanitariums before finding peace (and fatalism) in church. Were
+                it not for the insulation her faith provides her psyche, she would
+                have survived her first encounter with the Old Ones and their cults.
+                Since then, she's become an expert on the occult and their horrific
+                practices, justified in the beliefe that the day she finally falls
+                will be the day of her ultimate salvation."
+  skills:
+    - High Strugh
+    - Brawling
+    - Thoughness
+
+- name: Fatima
+  quote: Admittedly, Old One names are easier to read than say
+
+- name: Elizabeth
+  quote: Heads! I win again. Best six out of eleven, luv?
+
+- name: Ahmed
+  quote: What is written is written
+
+- name: Morgan
+  quote: I've got a bad feeling about this...
+
+- name: Ian
+  quote: They have us surrounded, those poor bastards
+
+- name: Rasputin
+  quote: Sigh... Dead again
+
+- name: Borden
+  quote: "Two things are certain in life: Death and Axes"
+
+- name: The Kid
+  quote: "HAHAHAHA HAHAHAHA HAHAHAHA HAHAHAHA!!!"

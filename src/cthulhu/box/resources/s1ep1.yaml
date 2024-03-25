@@ -1,0 +1,262 @@
+name: Blasphemous Alchemy
+description: What's worse than cultists? Cultists who've set the place on fire. Another night and another damn ritual to summon an Elder God. If we blow up their labs, we can cause a lot of trouble for whatever it is they are summoning.
+disrupt_ritual: Destroy 4 of the 5 Labs (by dealing 4 or more total wounds to them with the Destroy Equipment action)
+mechanics:
+  - when the elder one advances, place 1 fire token in each space that has any cultists and no Fire
+actions:
+  - Extinguish Fire, Make a roll. Remove 1 Fire token in your space for each success
+  - Destroy Equipment, Make a roll against a lab in your space (this doesn't count asn an attack). Each success deals 1 wound to the Lab. When a lab has 4 or more wounds, destroy it and turn over the lab token to reveal its effect
+lab_tokens:
+  - name: Safe Collapse!
+    effect: Heal all your stress
+  - name: Inferno!
+    effect: Place a Fire token in this space and each adjacent space
+  - name: Inferno!
+    effect: Place a Fire token in this space and each adjacent space
+  - name: Major Explosion!
+    effect: Deal 2 wounds to all enemies in this and adjacent spaces
+  - name: Major Explosion!
+    effect: Deal 2 wounds to all enemies in this and adjacent spaces
+mythos_cards:
+  - name: Fire Vampire!
+    elder_sign: true
+    mechanics:
+      - The nearest Fire Vampire moves 2 spaces towards 1
+      - Place 1 Fire token in it's space
+    summon:
+      - enemy: Fire Vampire
+        location: Blue Gate
+  - name: Students Go Mad!
+    elder_sign: false
+    mechanics:
+      - If you have any Student Companions; Discard 1 Student and summon 1 cultist in your space
+  - name: Monsters in the labs!
+    elder_sign: false
+    mechanics:
+      - Each Fire Vampire and Byakhee move 1 space towards you
+    summon:
+      - enemy: Fire Vampire
+        location: Yellow Gate
+      - enemy: Byakhee
+        location: Blue Gate
+  - name: Byakhee!
+    elder_sign: true
+    mechanics:
+      - Each Byakhee moves directly into your space
+    summon:
+      - enemy: Byakhee
+        location: Red Gate
+  - name: Chaos in the labs!
+    elder_sign: true
+    mechanics:
+      - Move the Elder one and each monster 1 space towards the undestroyed lab closest to each of them
+      - Summon a Cultist in each damaged lab
+      - Remove 1 wound from each lab in a space with a cultist
+  - name: Conflagration
+    elder_sign: true
+    mechanics:
+      - Add 1 Fire token to your space and to each adjacent space
+  - name: Fire Vampire!
+    elder_sign: true
+    mechanics:
+      - Each Fire Vampire moves 1 space towards 1
+      - Then place 1 Fire token in their spaces
+    summon:
+      - enemy: Fire Vampire
+        location: Yellow Gate
+  - name: Lab Accident!
+    elder_sign: true
+    mechanics:
+      - Each figure in a space with an undestroyed lab takes 1 wound
+      - also, each investigator with a Guilty Counscience takes 2 stress, for each stress they cannot take, they take a wound instead
+discovery_cards:
+  - name: Monkey Paw
+    tradable: false
+    description: "Painted glyphs on the floor. What is going on here?"
+    mechanics:
+      - if you have the monkey key as a companion take 2 wounds and discard the monkey
+    left:
+      item:
+        name: Monkey Paw
+        cost: None # or discard to heal all your health
+        effects:
+          - each elder sign may count as both as success AND a <tentacle>"
+  - name: Desk
+    description: "Shoved against the wall. What's in this drawer?"
+    left:
+      item:
+        name: Whiskey Bottle
+        effects: 
+          - discard this card to heal all your stress and discard all your Guilty Counscience cards
+  - name: Medical Supplies
+    description: "Has to be something useful here"
+    left:
+      item:
+        name: Medicine
+        effects: 
+          - discard this card to heal all wounds from 1 investigator in your space (including you)
+  - name: Janitor
+    description: "Did Jerome make it?"
+    mechanics:
+      - if you have a guilty conscience, take 1 stress
+    left:
+      item:
+        name: Ammonia
+        cost: 1 stress
+        effects:
+          - You may discard this card and the Bleach card to deal 6 wounds to all figures either in your space (including you) or an adjacentspace.
+    right:
+      companion:
+        name: Ralph, The Janitor
+        life: 1
+        cost: 2 stress
+        effects:
+          - While you have him gain 1 level in Thoughness.
+  - name: Locked Cabinet
+    description: "Can probably pry this open"
+    left:
+      item:
+        name: Amulet of N'Gahal
+        cost: 3 wounds # if not taken the right item is taken automatically
+        effects:
+          - If you would take wounds from Fire, you may instead deal that many wounds to 1 enemy in your space
+    right:
+      companion:
+        name: Spirit of N'Gahal
+        tradable: false
+  - name: Feral Student
+    description: "She only makes vague simioan noises"
+    left:
+      condition:
+        name: Guilty Conscience
+        description: "I should have done something"
+    right:
+      companion:
+        name: Margot, The Feral Student
+        type: Student
+        cost: 2 stress # if not taken, left item is taken automatically
+        life: 1
+        effects: 
+          - While you have her, gain 1 level in Brawling.
+        restrictions:
+          - You cannot have both Margot and Professor as companions, discard 1
+  - name: Cages
+    description: "This cage contains a one-handed lab monkey. It looks at you cunningly."
+    mechanics:
+      - if you have Guilty Conscience, take 1 stress
+    left:
+      condition:
+        name: Guilty Conscience
+        description: "I should have done something"
+        cost: heal all your stress
+    right:
+      companion:
+        name: One handed lab monkey
+        type: Animal
+        cost: None # if not taken, left item is taken automatically
+        life: 1
+        effects:
+          - Discard this card to give 1 of your items to an investigator anywhere
+  - name: Furious Student
+    description: "He can't hurt me Anymore! I have a gun!"
+    left:
+      item:
+        name: Pistol
+        cost: 1 wound
+        description: "I should have done something"
+        effects:
+          - When attacking, gain 1 <bonus>. If you have the Marksman skill gain 2 <bonus> instead
+    right:
+      companion:
+        name: Chester, The Furious Student
+        type: Student
+        cost: 1 wound
+        life: 3
+        restrictions:
+          - you cannot have both Chester and the Professor as compainions, discard one
+  - name: Up to no good
+    description: "The professor... he asked me to help... I'm not in trouble am I? The student holds a beaker."
+    mechanics:
+      - if you have Guilty Conscience, take 1 stress
+    left:
+      item:
+        name: Beaker
+        cost: 2 stress
+        effects:
+          - You may discard this card to deal wounds to all labs and figures either in your space (including you or an adjacent space. Each target takes wounds equal to the number of Fire tokens in their space)
+    right:
+      companion:
+        name: Charles, The grad student
+        type: Student
+        cost: 2 stress
+        life: 3
+        effects:
+          - Gain 2 <bonus> to extinguish a fire
+  - name: Good boy
+    description: "Who's a good boy?"
+    left:
+      condition:
+        name: Guilty Conscience
+        description: "I should have done something"
+    right:
+      companion:
+        name: Rex, The dog
+        type: Animal
+        cost: 2 stress # if not taken, left item is taken automatically
+        life: 1
+        effects:
+          - Heal 1 stress at each of your turns
+  - name: Fire Equipment
+    description: "This should come in handy"
+    left:
+      item:
+        name: Fire Extinguisher
+        effects:
+          - Gain 2 <bonus> to Extinguish a Fire
+    right:
+      item:
+        name: Fire Axe
+        effects:
+          - When attacking gain 1 <bonus> if you have the Brawling skill
+  - name: Assistant Janitor
+    description: "I got away, but he is going to kill us! We have to hide"
+    mechanics:
+      - if you have a guilty Conscience, take 1 stress
+    left:
+      item:
+        name: Bleach
+        cost: 1 stress
+        effects:
+          - You may discard this card and the Ammonia card to deal 6 wounds to all figures either in your space (including you or an adjacent space)
+    right:
+      companion:
+        name: Jerome, The Assistant Janitor
+        cost: 2 stress
+        life: 1
+        effects:
+          - While you have him, gain 1 level in Stealth
+  - name: Lab Books
+    description: "It's filled with a strange scrawl. Something about swapping the minds of humans and animals. Looks like nonsense"
+    left:
+      item:
+        name: Lab Notes
+        effects:
+          - Gain 2 <bonus> to all rolls if you have at least 1 Student or Animal companion
+  - name: Clutter
+    description: "Hard to find anything in this mess"
+    left:
+      item:
+        name: beaker
+        cost: 1 stress
+        effects:
+          - You may discard this card to deal wounds to all Labs and figures either in your space (including you) or an adjacent space. Each target takes wounds equal to the number of Fire tokens in their space
+  - name: Professor
+    description: "Have you seen my students? They scaped - I mean walked out-during an experiment."
+    mechanics:
+      - If any investigator has the Spirit of N'Gahal, the professor bursts into flames. Discard this and lose 1 sanity
+    right:
+      companion:
+        name: Warren Gates, Professor
+        cost: 2 stress
+        life: 1
+        effects: While you have him, gain 1 level in Arcane Mastery
