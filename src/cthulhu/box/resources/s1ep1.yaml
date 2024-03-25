@@ -6,3 +6,66 @@ mechanics:
 actions:
   - Extinguish Fire, Make a roll. Remove 1 Fire token in your space for each success
   - Destroy Equipment, Make a roll against a lab in your space (this doesn't count asn an attack). Each success deals 1 wound to the Lab. When a lab has 4 or more wounds, destroy it and turn over the lab token to reveal its effect
+lab_tokens:
+  - name: Safe Collapse!
+    effect: Heal all your stress
+  - name: Inferno!
+    effect: Place a Fire token in this space and each adjacent space
+  - name: Inferno!
+    effect: Place a Fire token in this space and each adjacent space
+  - name: Major Explosion!
+    effect: Deal 2 wounds to all enemies in this and adjacent spaces
+  - name: Major Explosion!
+    effect: Deal 2 wounds to all enemies in this and adjacent spaces
+mythos_cards:
+  - name: Fire Vampire!
+    elder_sign: true
+    mechanics:
+      - The nearest Fire Vampire moves 2 spaces towards 1
+      - Place 1 Fire token in it's space
+    summon:
+      - enemy: Fire Vampire
+        location: Blue Gate
+  - name: Students Go Mad!
+    elder_sign: false
+    mechanics:
+      - If you have any Student Companions; Discard 1 Student and summon 1 cultist in your space
+  - name: Monsters in the labs!
+    elder_sign: false
+    mechanics:
+      - Each Fire Vampire and Byakhee move 1 space towards you
+    summon:
+      - enemy: Fire Vampire
+        location: Yellow Gate
+      - enemy: Byakhee
+        location: Blue Gate
+  - name: Byakhee!
+    elder_sign: true
+    mechanics:
+      - Each Byakhee moves directly into your space
+    summon:
+      - enemy: Byakhee
+        location: Red Gate
+  - name: Chaos in the labs!
+    elder_sign: true
+    mechanics:
+      - Move the Elder one and each monster 1 space towards the undestroyed lab closest to each of them
+      - Summon a Cultist in each damaged lab
+      - Remove 1 wound from each lab in a space with a cultist
+  - name: Conflagration
+    elder_sign: true
+    mechanics:
+      - Add 1 Fire token to your space and to each adjacent space
+  - name: Fire Vampire!
+    elder_sign: true
+    mechanics:
+      - Each Fire Vampire moves 1 space towards 1
+      - Then place 1 Fire token in their spaces
+    summon:
+      - enemy: Fire Vampire
+        location: Yellow Gate
+  - name: Lab Accident!
+    elder_sign: true
+    mechanics:
+      - Each figure in a space with an undestroyed lab takes 1 wound
+      - also, each investigator with a Guilty Counscience takes 2 stress, for each stress they cannot take, they take a wound instead
