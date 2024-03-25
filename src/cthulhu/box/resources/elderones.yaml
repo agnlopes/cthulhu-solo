@@ -26,4 +26,60 @@
   minions:
     - Cultist
     - Star Spawn
-    
+  mythos_deck:
+    - name: Star Spawn!
+      elder_sign: true
+      mechanic:
+        - If the Star Spawn is on the board, each investigator in its space loses 2 sanity.
+        - Star Spawn moves 2 spaces towards you
+      summon:
+        - enemy: Star Spawn
+          location: Blue Gate
+    - name: Crawling Chaos
+      elder_sign: true
+      mechanic:
+        - Each Cultist moves 1 space towards you
+        - If you are in a R'lyeh space, loses 1 sanity
+      summon:
+        - enemy: Cultist
+          location: Red Gate
+        - enemy: Cultist
+          location: Yellow Gate
+    - name: R'lyeh Awakens
+      elder_sign: true
+      mechanic:
+        - Each Cultist currently on a R'lyeh space moves 2 spaces towards you
+      summon:
+        - enemy: Cultist
+          location: Blue Gate
+        - enemy: Cultist
+          location: Yellow Gate
+    - name: Star Spawn!
+      elder_sign: true
+      mechanic:
+        - Move the Star Spawn 2 spaces towards you
+        - Each investigator in its space loses 1 sanity
+      summon:
+        - enemy: Star Spawn
+          location: Red Gate
+    - name: The thing that should not be
+      elder_sign: false
+      mechanic:
+        - If Cthulhu is on the board, EACH investigator loses 1 sanity
+        - If Cthulhu is on the track, EACH investigator takes 2 stress, for every stress you cannot take, take 1 wound instead
+    - name: R'lyeh Unleashed!
+      elder_sign: true
+      mechanic: Each investigator in a R'lyeh space loses 1 sanity
+    - name: The Sleeper Awakens!
+      elder_sign: false
+      mechanic:
+        - If there are 2 or more R'lyeh spaces adjacent to each other, at the end of the turn advance Cthulhu on the track as if it there were 3 elder_sign
+    - name: Astral Promise
+      elder_sign: false
+      mechanic:
+        - Move the nearest cultist to your space and choose one;
+          - Add a R'yleh token to your space (if there's one already there, add it to the nearest space without one) or
+          - Loose 2 sanity
+
+
+
