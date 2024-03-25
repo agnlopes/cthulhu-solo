@@ -1,0 +1,95 @@
+- Gate Manipulation:
+  1: If you are in the same space as a Gate, monsters and cultists summoned there take wounds equal to half their health (rounded up)
+  2: This skill works if you are within 1 space of a Gate
+  3: If you are within 1 space of a Gate, you are always considered safe to Rest
+  4: If you are within 1 space of a Gate, you gain 1 <bonus> and have 1 free Rest action
+
+- Savage:
+  1: When attacking, you may deal 1 additional wound to your target if there are no other enemies in its space
+  2: You may deal 1 additional wound (2 total)
+  3: If you kill the target and there are no other enemies in its space, heal all your stress
+  4: You may deal 3 additional wounds (5 total)
+
+- Swiftness:
+  1: When you Run, you may move 1 additional space
+  2: You have 1 free Run action each turn
+  3: During a run you may take 1 invetigator with you when leaving a space
+  4: You have 1 extra action each turn
+
+- Unkillable:
+  1: 1 free death; If you would die from wounds, instead return to life with full health
+  2: 1 additional free death (2 total)
+  3: When you return to life, also heal all your stress
+  4: 1 additional free death (3 total)
+
+- Vengeance Obsession:
+  1: When attacked, if you are dealt any wounds, deal 1 sound to that enemy and heal 1 stress
+  2: Instead, deal 1 wound to each enemy in the attacker's space and heal 1 stress
+  3: Instead, deal 1 sound to each enemy in the attacker's space and heal 2 stress
+  4: Instead, deal 2 wounds to each enemy in the attacker's space and heal 2 stress
+
+- Protector:
+  1: If an investigator in your space is attacked, you may redirect the attack to you (before the roll)
+  2: You may redirect to you an attack made against an investigator up to 1 space away
+  3: You have 2 free rerolls when being attacked and redirected attack
+  4: After resolving a redirected attack, heal all your stress
+
+- Healing Prayer:
+  1: At the end of your turn, you may heal 1 stress OR wound on an investigator in your space (it may be yourself)
+  2: Instead, heal 2 in any combination of stress and wounds
+  3: Instead, heal 2 stress AND 2 wounds
+  4: Instead, heal 2 stress AND 2 wounds on EACH investigator in your space
+
+- Lucky:
+  1: You have 1 free reroll per turn
+  2: You have 1 additional reroll per turn (2 total)
+  3: You have 1 additional reroll per turn (3 total)
+  4: Instead, you have 3 free rerolls PER ROLL
+
+- Read the Omens:
+  1: You may put the first Mythos card you draw each turn at the botton of the deck and draw again. If you do, heal 2 stress
+  2: Instead draw 2 Mythos cards, choose 1 to play, and put the other underneath the deck. Heal 2 stress
+  3: Instead, if you draw 2 cards to choose from, heal all of your stress
+  4: You may take 2 wounds to cancel any Mythos card's special effect and enemy summoning
+
+- Stealth:
+  1: When you Run, you may Sneak once (one enemy doesn't follow you)
+  2: Instead, when you Run you may Sneak 3 13:27:38
+  3: Deal 1 wound to each enemy you Sneak past
+  4: Instead, you may Sneak any number of times
+
+- Fueled by Madness:
+  1: Gain 1 <bonus> die while your sanity is on a <sanit_checkpoint>
+  2: Instead, gain 1 <bonus> while your sanity is on a <sanity_checkpoint> OR 1 space back
+  3: Instead, gain 2 <bonus> while your sanity is on a <sanity_checkpoint> or 1 space back
+  4: Instead, gain 3 <bonus> while your sanity is on a <sanity_checkpoint> or 1 space back
+
+- High Strugh:
+  1: When making any roll, you may count 1 <tentacle> as 1 success (it still also count as a <tentacle>)
+  2: Instead, you may count any number of <tentacle> as successes (they still also count as <tentacle>)
+  3: Heal 1 of your wounds for each <tentacle> you count as success
+  4: Also, if you rolled at least 2 <tentacle>, you may add 3 successes to the roll
+
+- Brawling:
+  1: Gain <bonus> when attacking a target in your space
+  2: When you attac, you may target ANY NUMBER of figures in your spaces (split the wounds as you like)
+  3: You have 2 free rerools when attacking a target in your space
+  4: When you attack figures in your space, deal the full wounds to each target
+
+- Thoughness:
+  1: You hafe 1 free reroll when attacked or rolling for fire
+  2: Instead, you may reduce wounds taken and loss of sanity by 1 when attacked or rolling for fire
+  3: Instead, you may reduce wounds taken and loss of sanity by 1 from ANY SOURCE
+  4: Instead, you may reduce wounds take by 2 and loss of sanity by 1 from ANY SOURCE
+
+- Marksman:
+  1: you may attack a target 1 space away
+  2: Gain 2 <bonus> when attacking a target not in your space
+  3: You may attack a target 1 additional space away (2 total)
+  4: You may perform 1 free ttack per turn against a target not in your space
+
+- Arcane Mastery:
+  1: When making any roll, you may count 1 <arcane> as a success
+  2: Instead, you may count any number of <arcane> as successes
+  3: Heal 1 stress for each <arcane> you count as a success
+  4: You may count any number of <arcane> as 2 sucesses each.
