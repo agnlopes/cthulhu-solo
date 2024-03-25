@@ -1,0 +1,29 @@
+- name: Cthulhu
+  life: 12
+  stages:
+    - 1: 
+      on_advances:
+        - Put a R'lyeh token on your space. IF there's already a token there, put it in the nearest space that doesn't have one
+        - Summon a Cultist on each R'lyeh space.
+        - Move the Star Spawn 1 space towards you. If it is not on the board, summon it on the Blue Gate
+    - 2:
+      on_reveal: 
+        - Summon Cthulhu into your space. 
+        - Each enemy in a R'lyeh space moves 1 space towards you
+      at_eot: 
+        - Put a r'lyeh token in Cthulhu's space. If there's already a token there, put it in the nearest space that doesn't have one
+    - 3:
+      on_reveal:
+        - Move Cthulhu to the Blue Gate
+        - Each investigator in a R'lyeh space takes 1 wound and loses 1 sanity
+      at_eot:
+        - Each investigator loses 1 sanity
+    - 4: 
+      on_reveal:
+        - Move Cthulhu to the starting space
+        - Each investigator must discard all Item and Companion cards. They may take 1 wound for each card they wish to keep
+        - If you need to place a R'lyeh token on the board but cannot, each investigator loses 2 sanity
+  minions:
+    - Cultist
+    - Star Spawn
+    
