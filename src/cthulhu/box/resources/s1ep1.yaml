@@ -69,3 +69,111 @@ mythos_cards:
     mechanics:
       - Each figure in a space with an undestroyed lab takes 1 wound
       - also, each investigator with a Guilty Counscience takes 2 stress, for each stress they cannot take, they take a wound instead
+discovery_cards:
+  - name: Monkey Paw
+    tradable: false
+    description: "Painted glyphs on the floor. What is going on here?"
+    mechanics:
+      - if you have the monkey key as a companion take 2 wounds and discard the monkey
+    left:
+      item:
+        name: Monkey Paw
+        cost: None # or discard to heal all your health
+        effects:
+          - each elder sign may count as both as success AND a <tentacle>"
+  - name: Desk
+    description: "Shoved against the wall. What's in this drawer?"
+    left:
+      item:
+        name: Whiskey Bottle
+        effects: 
+          - discard this card to heal all your stress and discard all your Guilty Counscience cards
+  - name: Medical Supplies
+    description: "Has to be something useful here"
+    left:
+      item:
+        name: Medicine
+        effects: 
+          - discard this card to heal all wounds from 1 investigator in your space (including you)
+  - name: Janitor
+    description: "Did Jerome make it?"
+    mechanics:
+      - if you have a guilty conscience, take 1 stress
+    left:
+      item:
+        name: Ammonia
+        cost: 1 stress
+        effects:
+          - You may discard this card and the Bleach card to deal 6 wounds to all figures either in your space (including you) or an adjacentspace.
+    right:
+      companion:
+        name: Ralph, The Janitor
+        life: 1
+        cost: 2 stress
+        effects:
+          - While you have him gain 1 level in Thoughness.
+  - name: Locked Cabinet
+    description: "Can probably pry this open"
+    left:
+      item:
+        name: Amulet of N'Gahal
+        cost: 3 wounds # if not taken the right item is taken automatically
+        effects:
+          - If you would take wounds from Fire, you may instead deal that many wounds to 1 enemy in your space
+    right:
+      companion:
+        name: Spirit of N'Gahal
+        tradable: false
+  - name: Feral Student
+    description: "She only makes vague simioan noises"
+    left:
+      condition:
+        name: Guilty Conscience
+        description: "I should have done something"
+    right:
+      companion:
+        name: Margot, The Feral Student
+        type: Student
+        cost: 2 stress # if not taken, left item is taken automatically
+        life: 1
+        effects: 
+          - While you have her, gain 1 level in Brawling.
+        restrictions:
+          - You cannot have both Margot and Professor as companions, discard 1
+  - name: Cages
+    description: "This cage contains a one-handed lab monkey. It looks at you cunningly."
+    mechanics:
+      - if you have Guilty Conscience, take 1 stress
+    left:
+      condition:
+        name: Guilty Conscience
+        description: "I should have done something"
+        cost: heal all your stress
+    right:
+      companion:
+        name: One handed lab monkey
+        type: Animal
+        cost: None # if not taken, left item is taken automatically
+        life: 1
+        effects:
+          - Discard this card to give 1 of your items to an investigator anywhere
+  - name: Furious Student
+    description: "He can't hurt me Anymore! I have a gun!"
+    left:
+      item:
+        name: Pistol
+        cost: 1 wound
+        description: "I should have done something"
+        effects:
+          - When attacking, gain 1 <bonus>. If you have the Marksman skill gain 2 <bonus> instead
+    right:
+      companion:
+        name: Chester, The Furious Student
+        type: Student
+        cost: 1 wound
+        life: 3
+        restrictions:
+          - you cannot have both Chester and the Professor as compainions, discard one
+          
+
+
