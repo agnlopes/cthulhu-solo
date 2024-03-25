@@ -1,0 +1,11 @@
+- name: Fire Vampire
+  life: 4
+  standard_dice: 2
+  bonus_dice: 1
+  mechanic: When it attacks, first place a Fire token in its space
+
+- name: Byakhee
+  life: 3
+  standard_dice: 1
+  bonus_dice: 2
+  mechanic: When it attacks, each <arcane> also count as success
