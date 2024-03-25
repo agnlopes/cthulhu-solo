@@ -1,0 +1,8 @@
+name: Blasphemous Alchemy
+description: What's worse than cultists? Cultists who've set the place on fire. Another night and another damn ritual to summon an Elder God. If we blow up their labs, we can cause a lot of trouble for whatever it is they are summoning.
+disrupt_ritual: Destroy 4 of the 5 Labs (by dealing 4 or more total wounds to them with the Destroy Equipment action)
+mechanics:
+  - when the elder one advances, place 1 fire token in each space that has any cultists and no Fire
+actions:
+  - Extinguish Fire, Make a roll. Remove 1 Fire token in your space for each success
+  - Destroy Equipment, Make a roll against a lab in your space (this doesn't count asn an attack). Each success deals 1 wound to the Lab. When a lab has 4 or more wounds, destroy it and turn over the lab token to reveal its effect
