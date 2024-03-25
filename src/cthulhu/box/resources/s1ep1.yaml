@@ -174,6 +174,89 @@ discovery_cards:
         life: 3
         restrictions:
           - you cannot have both Chester and the Professor as compainions, discard one
-          
-
-
+  - name: Up to no good
+    description: "The professor... he asked me to help... I'm not in trouble am I? The student holds a beaker."
+    mechanics:
+      - if you have Guilty Conscience, take 1 stress
+    left:
+      item:
+        name: Beaker
+        cost: 2 stress
+        effects:
+          - You may discard this card to deal wounds to all labs and figures either in your space (including you or an adjacent space. Each target takes wounds equal to the number of Fire tokens in their space)
+    right:
+      companion:
+        name: Charles, The grad student
+        type: Student
+        cost: 2 stress
+        life: 3
+        effects:
+          - Gain 2 <bonus> to extinguish a fire
+  - name: Good boy
+    description: "Who's a good boy?"
+    left:
+      condition:
+        name: Guilty Conscience
+        description: "I should have done something"
+    right:
+      companion:
+        name: Rex, The dog
+        type: Animal
+        cost: 2 stress # if not taken, left item is taken automatically
+        life: 1
+        effects:
+          - Heal 1 stress at each of your turns
+  - name: Fire Equipment
+    description: "This should come in handy"
+    left:
+      item:
+        name: Fire Extinguisher
+        effects:
+          - Gain 2 <bonus> to Extinguish a Fire
+    right:
+      item:
+        name: Fire Axe
+        effects:
+          - When attacking gain 1 <bonus> if you have the Brawling skill
+  - name: Assistant Janitor
+    description: "I got away, but he is going to kill us! We have to hide"
+    mechanics:
+      - if you have a guilty Conscience, take 1 stress
+    left:
+      item:
+        name: Bleach
+        cost: 1 stress
+        effects:
+          - You may discard this card and the Ammonia card to deal 6 wounds to all figures either in your space (including you or an adjacent space)
+    right:
+      companion:
+        name: Jerome, The Assistant Janitor
+        cost: 2 stress
+        life: 1
+        effects:
+          - While you have him, gain 1 level in Stealth
+  - name: Lab Books
+    description: "It's filled with a strange scrawl. Something about swapping the minds of humans and animals. Looks like nonsense"
+    left:
+      item:
+        name: Lab Notes
+        effects:
+          - Gain 2 <bonus> to all rolls if you have at least 1 Student or Animal companion
+  - name: Clutter
+    description: "Hard to find anything in this mess"
+    left:
+      item:
+        name: beaker
+        cost: 1 stress
+        effects:
+          - You may discard this card to deal wounds to all Labs and figures either in your space (including you) or an adjacent space. Each target takes wounds equal to the number of Fire tokens in their space
+  - name: Professor
+    description: "Have you seen my students? They scaped - I mean walked out-during an experiment."
+    mechanics:
+      - If any investigator has the Spirit of N'Gahal, the professor bursts into flames. Discard this and lose 1 sanity
+    right:
+      companion:
+        name: Warren Gates, Professor
+        cost: 2 stress
+        life: 1
+        effects: While you have him, gain 1 level in Arcane Mastery
