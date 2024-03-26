@@ -1,9 +1,41 @@
 - pathology: Masochism
-  symptoms: Each time you take wounds, put the same number of wound tokens on this token.
-            If there are no tokens on this card, take 1 sound. Otherwise remove all tokens from this card and heal 1 stress per token removed
+  mechanics: Each time you take wounds, put the same number of wound tokens on this card
+  symptoms: If there are no tokens on this card, take 1 sound. Otherwise remove all tokens from this card and heal 1 stress per token removed
 
 - pathology: Fear of Crowds
   symptoms: Take 1 stress for every other figure in your space (enemy or investigator). If you are alone, heal all of your stress instead
 
 - pathology: Kleptomania
   symptoms: Steal at least 1 Item, Companion, or tradable episode token from any investigator(s) in your space to heal all of your stress. If you can't steal anything, take 2 stress
+
+- pathology: Hypochondria
+  symptoms: Take 1 stress for each wound you have. If you have no wounds, heal all your stress. (Don't count wounds on Companions)
+
+- pathology: Pyromania
+  symptoms: Put a Fire token in your space. The, deal wounds eual to the number of Fire tokens in your space to ALL other figures there
+
+- pathology: Catatonia
+  symptoms: Lay your figure down. While down, you are Safe and can't be attacked, investigate, move or take any actions other than Rest. You must take 1 stress to stand up
+
+- pathology: Codependency
+  mechanics: At the start of game, name a codependent investigator
+  symptoms: If your codependent is alive, but not in your space, take 2 stress. Then move either of you to the other's space (enemies do not follow)
+
+- pathology: Paranoia
+  symptoms: All monsters on the board move 1 space towards you. Then, if there are no enemies in your space, heal all your stress
+
+- pathology: Obsessive Disorder
+  symptoms: Move your stress to match your health value. Then discard Discovery cards as needed until you have the same number of cards on each side of your investigator board
+
+- pathology: Recurring Trauma
+  mechanics: Keep the last Mythos card any player draw (with no <elder_sign>) near this card, until they're shuffled
+  symptoms: If there is a Mythos card near this card, play it as if you had just drawn it. Otherwise, heal all of your stress
+
+- pathology: Psychotic Outbreaks
+  symptoms: Move to the nearest space with at least 1 figure (if your space has other figures, do not move). Then, deal 2 wounds to ALL other figures in your space
+
+- pathology: Fear of Crowds
+  symptoms: Take 1 stress for every other figure in your space (enemy or investigator). If you are alone, heal all of your stress instead
+
+- pathology: Short-term Memory Loss
+  symptoms: If you're at full stress, heal all of your stress and discard 1 Discovery card of your choice. If you are not at full stress take 1 stress
