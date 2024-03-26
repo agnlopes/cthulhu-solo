@@ -1,4 +1,4 @@
-# Cthulhu Solo TUI
+# Cthulhu Solo
 
 This is a simple TUI (Text User Interface) for the Cthulhu Death May die game,
 by Mythos. It is intended to be played solo, with multiple investigators if
