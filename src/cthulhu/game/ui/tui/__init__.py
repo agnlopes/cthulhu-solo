@@ -1,25 +1,23 @@
 from datetime import datetime
-from pytz import timezone
+from typing import TYPE_CHECKING, List, Optional
+
+from cthulhu.box.enemies import ElderOne
+from cthulhu.box.episodes import Episode
+from cthulhu.box.investigators import Investigator
 from textual import on
 from textual.app import App, ComposeResult
-from textual.reactive import reactive, Reactive
 from textual.containers import ScrollableContainer
+from textual.reactive import Reactive, reactive
 from textual.widget import Widget
 from textual.widgets import (
+    Footer,
     Header,
     Input,
-    Footer,
+    Log,
     Static,
     TabbedContent,
     TabPane,
-    Log,
-    Label,
-    Digits,
 )
-from typing import TYPE_CHECKING, List, Optional
-from cthulhu.box.investigators import Investigator
-from cthulhu.box.enemies import ElderOne
-from cthulhu.box.episodes import Episode
 
 if TYPE_CHECKING:
     from cthulhu.game import CthulhuGame

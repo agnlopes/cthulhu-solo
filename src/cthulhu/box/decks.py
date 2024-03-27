@@ -1,6 +1,6 @@
 import random
 from dataclasses import dataclass, field
-from typing import List, Tuple
+from typing import List, Callable
 
 
 @dataclass
@@ -10,8 +10,10 @@ class Card:
 
 
 @dataclass
-class InsanityCard(Card):
-    pass
+class InsanityCard:
+    pathlogy: str
+    mechanics: Callable
+    symptoms: List[Callable]
 
 
 @dataclass
@@ -52,6 +54,18 @@ class CardsDeck:
 @dataclass
 class InsanityCardsDeck(CardsDeck):
     cards: List[InsanityCard] = field(default_factory=list)
+
+    def __post_Init__(self):
+        self.cards.append(
+            InsanityCard(
+                pathlogy="Masochism",
+                mechanics=lambda: None,
+                symptoms=[
+                    lambda: None,
+                    lambda: None,
+                ],
+            )
+        )
 
 
 @dataclass

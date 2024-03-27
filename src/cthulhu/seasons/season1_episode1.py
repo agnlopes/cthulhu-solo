@@ -1,20 +1,21 @@
 from dataclasses import dataclass, field
 
-from cthulhu.box.tokens import FireToken, GateToken, PlayerStartToken
-from cthulhu.box.enemies import Cultist
-from cthulhu.box.episodes import Episode, Room, EpisodeMap
 from cthulhu.box.decks import (
-    MythosCardsDeck,
-    MythosCard,
     DiscoveryCard,
-    DiscoveryCardsDeck,
     DiscoveryCardItem,
+    DiscoveryCardsDeck,
+    MythosCard,
+    MythosCardsDeck,
 )
+from cthulhu.box.enemies import Cultist
+from cthulhu.box.episodes import Episode, EpisodeMap, Room
+from cthulhu.box.tokens import FireToken, GateToken, PlayerStartToken
 
 
 @dataclass
 class Season1Episode1(Episode):
-    id: str = "season1_episode1"
+    season: int = 1
+    episode: int = 1
     name: str = "Blasphemous Alchemy"
     map: EpisodeMap = field(init=False)
     mythos_deck: MythosCardsDeck = field(init=False)
@@ -64,31 +65,11 @@ class Season1Episode1(Episode):
         self.map.add_edge(rooms[14], rooms[15])
 
         # load mythos cards
-        mythos_cards = [
-            MythosCard(name="aaa", description="", mythos_symbol=False),
-            MythosCard(name="bbb", description="", mythos_symbol=False),
-            MythosCard(name="ccc", description="", mythos_symbol=False),
-        ]
-
+        mythos_cards = []
         for card in mythos_cards:
             self.mythos_deck.add(card)
 
         # load discovery cards
-        # TODO: probably a better idea to load this from a file
-        discovery_cards = [
-            DiscoveryCard(
-                name="aaa",
-                description="",
-                left=DiscoveryCardItem("aaa_left", "", "", ""),
-                right=DiscoveryCardItem("aaa_right", "", "", ""),
-            ),
-            DiscoveryCard(
-                name="bbb",
-                description="",
-                left=DiscoveryCardItem("bbb_left", "", "", ""),
-                right=DiscoveryCardItem("bbb_right", "", "", ""),
-            ),
-        ]
-
+        discovery_cards = []
         for card in discovery_cards:
             self.discovery_deck.add(card)

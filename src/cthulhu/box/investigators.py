@@ -1,35 +1,47 @@
-from typing import Dict, List, Tuple, Optional, TypeVar, Generic
 from dataclasses import dataclass, field
-from transitions import State, Machine
+from typing import List
 
-type TypeSkill = Skill
+from cthulhu.box.skills import (
+    ArcaneMasterySkill,
+    BrawlingSkill,
+    FueledByMadnessSkill,
+    GateManipulationSkill,
+    HealingPrayerSkill,
+    HighStrungSkill,
+    LuckySkill,
+    MarksmanSkill,
+    ProtectorSkill,
+    ReadTheOmensSkill,
+    SavageSkill,
+    Skill,
+    StealthSkill,
+    SwiftnessSkill,
+    ThoughnessSkill,
+    UnkillableSkill,
+    VengeanceObsessionSkill,
+)
+from transitions import Machine, State
+
 type TypeInvestigator = Investigator
 
 
 @dataclass
-class Skill[TypeSkill]:
-    name: str
-    level: int = 1
-    levels = Dict[int, str]
-
-
-@dataclass
 class Investigator[TypeInvestigator]:
-    name: str = "Player"
+    name: str = "Investigator"
     insanity: int = 0
     max_insanity: int = 15
     health: int = 5
     max_health: int = 0
     stress: int = 5
     max_stress: int = 5
-    skills = List[Skill]
+    skills: List[Skill] = field(default_factory=list)
     actions: int = 3
     actions_left: int = 3
     actions_free: List[str] = field(default_factory=list)
     is_safe: bool = True
     is_alive: bool = True
     is_standing: bool = True
-    room: int = 0
+    room_id: int = 0
     fsm: Machine = field(init=False)
 
     def __post_init__(self):
@@ -47,42 +59,118 @@ class Investigator[TypeInvestigator]:
 
 
 @dataclass
-class SkillStealth(Skill):
-    name: str = "Stealth"
-    levels = {
-        1: "When you move, you may sneak past 1 enemy, so he doesnt follow you.",
-        2: "When you move, you may sneak past 2 enemies, so he doesnt follow you.",
-        3: "When you move, you may sneak past 3 enemies, so he doesnt follow you.",
-        4: "When you move, you may sneak past 4 enemies, so he doesnt follow you.",
-    }
-
-
-@dataclass
-class SkillSwiftness(Skill):
-    name: str = "Swiftness"
-    levels = {
-        1: "You may move 1 additional space.",
-        2: "You may move 2 additional spaces.",
-        3: "You may move 3 additional spaces.",
-        4: "You may move 4 additional spaces.",
-    }
-
-
-@dataclass
-class SkillThouthness(Skill):
-    name: str = "Toughness"
-    levels = {
-        1: "You may ignore 1 damage.",
-        2: "You may ignore 2 damage.",
-        3: "You may ignore 3 damage.",
-        4: "You may ignore 4 damage.",
-    }
-
-
-@dataclass
-class InvestigatorBeth(Investigator):
+class BethInvestigator(Investigator):
     name: str = "Beth"
-    skills = [SkillStealth(), SkillSwiftness(), SkillThouthness()]
+    skills: List[Skill] = field(
+        default_factory=lambda: [StealthSkill(), SwiftnessSkill(), ThoughnessSkill()]
+    )
 
 
-all_investigators = {"beth": InvestigatorBeth()}
+@dataclass
+class FatimaInvestigator(Investigator):
+    name: str = "Fatima"
+    skills: List[Skill] = field(
+        default_factory=lambda: [
+            ReadTheOmensSkill(),
+            ArcaneMasterySkill(),
+            SwiftnessSkill(),
+        ]
+    )
+
+
+@dataclass
+class ElizabethInvestigator(Investigator):
+    name: str = "Elizabeth"
+    skills: List[Skill] = field(
+        default_factory=lambda: [LuckySkill(), MarksmanSkill(), StealthSkill()]
+    )
+
+
+@dataclass
+class AhmedInvestigator(Investigator):
+    name: str = "Ahmed"
+    skills: List[Skill] = field(
+        default_factory=lambda: [
+            HealingPrayerSkill(),
+            StealthSkill(),
+            ArcaneMasterySkill(),
+        ]
+    )
+
+
+@dataclass
+class MorganInvestigator(Investigator):
+    name: str = "Morgan"
+    skills: List[Skill] = field(
+        default_factory=lambda: [ProtectorSkill(), SwiftnessSkill(), ThoughnessSkill()]
+    )
+
+
+@dataclass
+class IanInvestigator(Investigator):
+    name: str = "Ian"
+    skills: List[Skill] = field(
+        default_factory=lambda: [
+            VengeanceObsessionSkill(),
+            BrawlingSkill(),
+            SwiftnessSkill(),
+        ]
+    )
+
+
+@dataclass
+class RasputinInvestigator(Investigator):
+    name: str = "Rasputin"
+    skills: List[Skill] = field(
+        default_factory=lambda: [
+            UnkillableSkill(),
+            ArcaneMasterySkill(),
+            BrawlingSkill(),
+        ]
+    )
+
+
+@dataclass
+class BordenInvestigator(Investigator):
+    name: str = "Borden"
+    skills: List[Skill] = field(
+        default_factory=lambda: [SavageSkill(), SwiftnessSkill(), StealthSkill()]
+    )
+
+
+@dataclass
+class AdamInvestigator(Investigator):
+    name: str = "Adam"
+    skills: List[Skill] = field(
+        default_factory=lambda: [
+            FueledByMadnessSkill(),
+            MarksmanSkill(),
+            ThoughnessSkill(),
+        ]
+    )
+
+
+@dataclass
+class TheKidInvestigator(Investigator):
+    name: str = "The Kid"
+    skills: List[Skill] = field(
+        default_factory=lambda: [
+            GateManipulationSkill(),
+            MarksmanSkill(),
+            ArcaneMasterySkill(),
+        ]
+    )
+
+
+all_investigators = {
+    "beth": BethInvestigator(),
+    "fatima": FatimaInvestigator(),
+    "elizabeth": ElizabethInvestigator(),
+    "ahmed": AhmedInvestigator(),
+    "morgan": MorganInvestigator(),
+    "ian": IanInvestigator(),
+    "rasputin": RasputinInvestigator(),
+    "borden": BordenInvestigator(),
+    "adam": AdamInvestigator(),
+    "thekid": TheKidInvestigator(),
+}
