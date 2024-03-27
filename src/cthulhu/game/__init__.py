@@ -1,13 +1,13 @@
-from dataclasses import dataclass, field
 import os
+from dataclasses import dataclass, field
 from typing import List
-from transitions import State, Machine
 
 from cthulhu.box.enemies import ElderOne, all_elder_ones
 from cthulhu.box.episodes import Episode
 from cthulhu.box.investigators import Investigator, all_investigators
 from cthulhu.exceptions import InvestigatorNotFound
 from cthulhu.seasons import all_episodes
+from transitions import Machine, State
 
 mode = os.getenv("CTHULHU_MODE", "tui")
 match mode:
@@ -39,20 +39,17 @@ class CthulhuGame:
     investigators: List[Investigator] = field(default_factory=list)
     elder_one_selected: str = "cthulhu"
     elder_one: ElderOne = field(init=False)
-    selected_season: str = "1"
-    selected_episode: str = "1"
+    selected_episode: str = "s1e1"
     episode: Episode = field(init=False)
-    episode_id: str = field(init=False)
     track: ElderOneTrack = field(init=False)
     fsm: Machine = field(init=False)
     _is_ritual_disrupted: bool = False
     _is_elderone_on_the_board: bool = False
-    game_input: str = ""
     current_investigator: Investigator = field(init=False)
 
     def __post_init__(self):
         self.set_fsm()
-        self.setup()
+        self.setup_board()
 
     def set_fsm(self):
         machine_states = [
@@ -89,7 +86,7 @@ class CthulhuGame:
 
     @property
     def has_game_ended(self):
-        if len(self.investigators_alive) < 1 or self.game_input == "quit":
+        if len(self.investigators_alive) < 1:
             return True
         return False
 
@@ -99,13 +96,7 @@ class CthulhuGame:
 
     def setup_board(self):
         print("setting up game... ")
-        # episode
-        _season, _episode = (
-            f"season{self.selected_season}",
-            f"episode{self.selected_episode}",
-        )
-        self.season = self.selected_season
-        self.episode = all_episodes[f"{_season}_{_episode}"]
+        self.episode = all_episodes[self.selected_episode]
 
         # investigators
         for investigator in self.selected_investigators:
@@ -125,7 +116,6 @@ class CthulhuGame:
 @dataclass
 class CthulhuGameController:
     game: CthulhuGame
-    verbosity: int = 0
     ui: GameUI = field(init=False)
 
     def __post_init__(self):

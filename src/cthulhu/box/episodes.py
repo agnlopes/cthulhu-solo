@@ -1,6 +1,6 @@
 from collections import defaultdict
 from dataclasses import dataclass, field
-from typing import DefaultDict, Iterable, List
+from typing import DefaultDict, Iterable, List, Tuple
 
 from cthulhu.box.enemies import Enemy
 from cthulhu.box.investigators import Investigator
@@ -42,11 +42,16 @@ class EpisodeMap:
 
 @dataclass
 class Episode:
-    id: str
+    season: int
+    episode: int
     name: str
     map: EpisodeMap = field(init=False)
     actions: List[Iterable] = field(default_factory=list)
     rules: List[Iterable] = field(default_factory=list)
+
+    @property
+    def id(self) -> str:
+        return f"s{self.season}e{self.episode}"
 
 
 class EpisodesRegistry:

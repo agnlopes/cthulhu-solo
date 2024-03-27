@@ -1,31 +1,25 @@
 import argparse
 
-from cthulhu.game import CthulhuGame, CthulhuGameController
+from cthulhu.box.enemies import all_elder_ones
 from cthulhu.box.investigators import all_investigators
+from cthulhu.game import CthulhuGame, CthulhuGameController
 from cthulhu.seasons import all_episodes
 
 
 def argparser():
-    seasons = list(all_episodes.keys())
-    print(seasons)
+    episodes = all_episodes.keys()
+    investigators = all_investigators.keys()
+    elder_ones = all_elder_ones.keys()
+
     parser = argparse.ArgumentParser(description="Mythos's Cthulhu Death May Die")
 
-    # TODO: valid seasons and players are hardcoded, should be read from the config file, or from the game itself
-    parser.add_argument(
-        "-s",
-        "--season",
-        dest="season",
-        type=str,
-        default="1",
-        help="Season to be played, valid values are: 1, 2, 3",
-    )
     parser.add_argument(
         "-e",
         "--episode",
         dest="episode",
         type=str,
         default="1",
-        help="Episode to be played, valid values are: 1, 2, 3, 4, 5, 6",
+        help=f"Episode to be played, valid values are: {', '.join(episodes)}",
     )
     parser.add_argument(
         "-eo",
@@ -33,7 +27,7 @@ def argparser():
         dest="elder_one",
         type=str,
         default="cthulhu",
-        help="Elder One to be played, valid values are: cthulhu",
+        help=f"Elder One to be played, valid values are: {', '.join(elder_ones)} ",
     )
     parser.add_argument(
         "-i",
@@ -41,15 +35,7 @@ def argparser():
         dest="investigators",
         type=str,
         action="append",
-        default=[],
-        help="investigator's name, valid values are: beth",
-    )
-    parser.add_argument(
-        "-v",
-        dest="verbosity",
-        action="count",
-        default=0,
-        help="log verbosity level -v=info, -vv=error, -vvv=debug",
+        help=f"investigator's name, valid values are: {', '.join(investigators)} ",
     )
     return parser.parse_args()
 
@@ -58,11 +44,10 @@ def main():
     args = argparser()
     game = CthulhuGame(
         selected_investigators=args.investigators,
-        selected_season=args.season,
         selected_episode=args.episode,
         elder_one_selected=args.elder_one,
     )
-    controller = CthulhuGameController(game, verbosity=0)
+    controller = CthulhuGameController(game)
     controller.ui.run()
 
 
