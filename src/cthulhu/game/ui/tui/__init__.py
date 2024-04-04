@@ -135,7 +135,7 @@ class GameUI(App):
         yield MainPane(self.game.episode, id="main", classes="box")
         yield RoomStats(
             # TODO: Get this from current_investigator later
-            self.game.investigators[0].room,
+            self.game.investigators[0].room_id,
             id="room",
             classes="box",
         )

@@ -1,6 +1,12 @@
 from cthulhu.box.investigators import all_investigators
 
 
+class EpisodeNotFound(Exception):
+    def __init__(self, episode_name):
+        self.message = f"Episode: {episode_name} not found"
+        super().__init__(self.message)
+
+
 class EnemyNotFound(Exception):
     def __init__(self, enemy_name):
         self.message = f"Enemy: {enemy_name} not found"

@@ -27,7 +27,11 @@ type TypeInvestigator = Investigator
 
 @dataclass
 class Investigator[TypeInvestigator]:
-    name: str = "Investigator"
+    name: str = "Investigator Name"
+    long_name: str = "Investigator Long Name"
+    quote: str = "Some snarky words"
+    origin: str = ""
+    description: str = ""
     insanity: int = 0
     max_insanity: int = 15
     health: int = 5
@@ -49,20 +53,25 @@ class Investigator[TypeInvestigator]:
 
     def set_fsm(self):
         machine_states = [
+            State(name="waiting", on_enter="wait_for_turn"),
             State(name="playing", on_enter="play_actions"),
             State(name="mythos", on_enter="draw_mythos_card"),
             State(name="investigate", on_enter="investigate_or_fight"),
             State(name="resolv", on_enter="resolv_end_of_turn"),
         ]
-
-        self.fsm = Machine(self, states=machine_states, initial="playing")
+        self.fsm = Machine(self, states=machine_states, initial="waiting")
 
 
 @dataclass
 class BethInvestigator(Investigator):
     name: str = "Beth"
+    long_name: str = "Sister Beth"
+    origin: str = "Bogota, Colombia"
+    description: """
+    Sister Beth knows not what God's plan for ther may be, except that she'll likely meet him very soon. Afflicted at an early age with a nervous nature, young Beth made the rounds through various hospitals and sanitariums before finding peace (and fatalism) in church. Were it not for the insulation her faith provides her psyche, she would have survived her first encounter with the Old Ones and their cults. Since then, she's become an expert on the occult and their horrific practices, justified in the beliefe that the day she finally falls will be the day of her ultimate salvation."
+    """
     skills: List[Skill] = field(
-        default_factory=lambda: [StealthSkill(), SwiftnessSkill(), ThoughnessSkill()]
+        default_factory=lambda: [HighStrungSkill(), BrawlingSkill(), ThoughnessSkill()]
     )
 
 
