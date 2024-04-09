@@ -1,6 +1,9 @@
+import logging
+import os
 from dataclasses import dataclass, field
 from typing import List
 
+import yaml
 from cthulhu.box.skills import (
     ArcaneMasterySkill,
     BrawlingSkill,
@@ -24,6 +27,8 @@ from transitions import Machine, State
 
 type TypeInvestigator = Investigator
 
+_l = logging.getLogger(__name__)
+
 
 @dataclass
 class Investigator[TypeInvestigator]:
@@ -42,16 +47,14 @@ class Investigator[TypeInvestigator]:
     actions: int = 3
     actions_left: int = 3
     actions_free: List[str] = field(default_factory=list)
-    is_safe: bool = True
-    is_alive: bool = True
-    is_standing: bool = True
     room_id: int = 0
     fsm: Machine = field(init=False)
 
     def __post_init__(self):
-        self.set_fsm()
+        self.setup_fsm()
+        self.load_ext_info()
 
-    def set_fsm(self):
+    def setup_fsm(self):
         machine_states = [
             State(name="waiting", on_enter="wait_for_turn"),
             State(name="playing", on_enter="play_actions"),
@@ -61,15 +64,25 @@ class Investigator[TypeInvestigator]:
         ]
         self.fsm = Machine(self, states=machine_states, initial="waiting")
 
+    def load_ext_info(self):
+        prefix = os.path.dirname(__file__)
+        whitelist = ["long_name", "quote", "origin", "description"]
+        sanitized_name = self.name.lower().replace(" ", "_")
+        definitions = f"{prefix}/definitions/investigators/{sanitized_name}.yaml"
+
+        if os.path.isfile(definitions):
+            _l.debug(f"Loading {definitions}")
+            with open(definitions) as ymlfile:
+                data = yaml.safe_load(ymlfile)
+                for key in data:
+                    if key not in whitelist:
+                        del data[key]
+                self.__dict__.update(data)
+
 
 @dataclass
 class BethInvestigator(Investigator):
     name: str = "Beth"
-    long_name: str = "Sister Beth"
-    origin: str = "Bogota, Colombia"
-    description: """
-    Sister Beth knows not what God's plan for ther may be, except that she'll likely meet him very soon. Afflicted at an early age with a nervous nature, young Beth made the rounds through various hospitals and sanitariums before finding peace (and fatalism) in church. Were it not for the insulation her faith provides her psyche, she would have survived her first encounter with the Old Ones and their cults. Since then, she's become an expert on the occult and their horrific practices, justified in the beliefe that the day she finally falls will be the day of her ultimate salvation."
-    """
     skills: List[Skill] = field(
         default_factory=lambda: [HighStrungSkill(), BrawlingSkill(), ThoughnessSkill()]
     )
