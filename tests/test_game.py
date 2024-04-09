@@ -9,12 +9,11 @@ def test_game_instantiation():
     game = CthulhuGame(
         selected_investigators=["beth"],
         elder_one_selected="cthulhu",
-        selected_season="1",
-        selected_episode="1",
+        selected_episode="s1e1",
     )
-    assert game.episode.id == "season1_episode1"
     assert game.investigators[0].name == "Beth"
     assert game.elder_one.name == "Cthulhu"
+    assert game.episode.id == "s1e1"
 
 
 # test game standard dice

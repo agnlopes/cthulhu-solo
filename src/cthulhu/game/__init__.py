@@ -1,11 +1,11 @@
 import os
 from dataclasses import dataclass, field
-from typing import List
+from typing import Callable, List
 
 from cthulhu.box.enemies import ElderOne, all_elder_ones
 from cthulhu.box.episodes import Episode
 from cthulhu.box.investigators import Investigator, all_investigators
-from cthulhu.exceptions import InvestigatorNotFound
+from cthulhu.exceptions import InvestigatorNotFound, ElderOneNotFound
 from cthulhu.seasons import all_episodes
 from transitions import Machine, State
 
@@ -25,12 +25,23 @@ match mode:
 
 @dataclass
 class ElderOneTrack:
-    size: int = 10  # TODO: check this on the box
-    green: int = 5  # TODO: check this on the box
+    size: int = 8
+    green: int = 4
     current: int = 1
+    _on_eo_advances_effects: List[Callable] = field(default_factory=list)
+    _on_eo_summoned_effects: List[Callable] = field(default_factory=list)
 
-    def elder_one_advances(self):
-        self.track_current += 1
+    def advances(self, *args, **kwargs):
+        self.current += 1
+        if self.current == self.size:
+            # TODO: end game
+            pass
+
+        self._on_eo_advances(*args, **kwargs)
+
+    def _on_eo_advances(self, *args, **kwargs):
+        for effect in self._on_eo_advances_effects:
+            effect(*args, **kwargs)
 
 
 @dataclass
@@ -41,17 +52,16 @@ class CthulhuGame:
     elder_one: ElderOne = field(init=False)
     selected_episode: str = "s1e1"
     episode: Episode = field(init=False)
+    episode_id: str = field(init=False)
     track: ElderOneTrack = field(init=False)
     fsm: Machine = field(init=False)
-    _is_ritual_disrupted: bool = False
-    _is_elderone_on_the_board: bool = False
     current_investigator: Investigator = field(init=False)
 
     def __post_init__(self):
-        self.set_fsm()
+        self.setup_fsm()
         self.setup_board()
 
-    def set_fsm(self):
+    def setup_fsm(self):
         machine_states = [
             State(name="init"),
             State(name="setup", on_enter="setup_board"),
@@ -64,38 +74,13 @@ class CthulhuGame:
             {"trigger": "play", "source": "setup", "dest": "playing"},
             {"trigger": "end", "source": "playing", "dest": "end"},
         ]
+
         self.fsm = Machine(
             self, states=machine_states, transitions=machine_transitions, initial="init"
         )
 
-    @property
-    def is_ritual_disrupted(self):
-        return self._is_ritual_disrupted
-
-    @is_ritual_disrupted.setter
-    def is_ritual_disrupted(self, value: bool):
-        self._is_ritual_disrupted = value
-
-    @property
-    def is_elderone_on_the_board(self):
-        return self._is_elderone_on_the_board
-
-    @is_elderone_on_the_board.setter
-    def is_elderone_on_the_board(self, value):
-        self._is_elderone_on_the_board = value
-
-    @property
-    def has_game_ended(self):
-        if len(self.investigators_alive) < 1:
-            return True
-        return False
-
-    @property
-    def investigators_alive(self):
-        return [i for i in self.investigators if i.is_alive is True]
-
     def setup_board(self):
-        print("setting up game... ")
+        # episode
         self.episode = all_episodes[self.selected_episode]
 
         # investigators
@@ -104,12 +89,14 @@ class CthulhuGame:
                 raise InvestigatorNotFound(investigator)
             self.investigators.append(all_investigators[investigator])
 
+        # TODO: set investigators initial room,
+
         # elder one
         if self.elder_one_selected not in all_elder_ones:
-            # TODO: create an exception for this
-            raise ValueError(self.elder_one_selected)
+            raise ElderOneNotFound(self.elder_one_selected)
         self.elder_one = all_elder_ones[self.elder_one_selected]
 
+        # TODO: provide a way to select the investigators order, for now it is the order they were selected
         self.current_investigator = self.investigators[0]
 
 

@@ -1,10 +1,14 @@
+import logging
 from collections import defaultdict
 from dataclasses import dataclass, field
-from typing import DefaultDict, Iterable, List, Tuple
+from typing import DefaultDict, Iterable, List
 
+from cthulhu.utils.graph import Graph
 from cthulhu.box.enemies import Enemy
 from cthulhu.box.investigators import Investigator
 from cthulhu.box.tokens import Token
+
+_l = logging.getLogger(__name__)
 
 
 @dataclass
@@ -17,10 +21,8 @@ class Exit:
 @dataclass
 class Room:
     id: int
-    items: List[str] = field(default_factory=list)
-    enemies: List[Enemy] = field(default_factory=list)
-    investigators: List[Investigator] = field(default_factory=list)
     exits: List[Exit] = field(default_factory=list)
+    items: List[str] = field(default_factory=list)
     tokens: List[Token] = field(default_factory=list)
 
     def __str__(self):
@@ -42,16 +44,9 @@ class EpisodeMap:
 
 @dataclass
 class Episode:
-    season: int
-    episode: int
+    id: str
     name: str
     map: EpisodeMap = field(init=False)
-    actions: List[Iterable] = field(default_factory=list)
-    rules: List[Iterable] = field(default_factory=list)
-
-    @property
-    def id(self) -> str:
-        return f"s{self.season}e{self.episode}"
 
 
 class EpisodesRegistry:
