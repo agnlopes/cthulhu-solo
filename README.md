@@ -26,7 +26,7 @@ git clone git@github.com:agnlopes/cthulhu-solo.git
 ### install the game on your current python environment
 
 ```bash
-cd cthulhu-solo-tui
+cd cthulhu-solo
 pip3 install -e .
 ```
 
@@ -41,7 +41,7 @@ pip3 install -e .
 ### Make sure all tests are passing
 
 ```bash
-cd cthulhu-solo-tui
+cd cthulhu-solo
 make test
 ```
 
