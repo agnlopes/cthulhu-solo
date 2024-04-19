@@ -20,7 +20,7 @@ pip3 install poetry
 ### Clone this repository
 
 ```bash
-git git@github.com:agnlopes/cthulhu-solo-tui.git
+git clone git@github.com:agnlopes/cthulhu-solo.git
 ```
 
 ### install the game on your current python environment
